@@ -1,5 +1,5 @@
 // Core API configuration and shared utilities
-export const API_URL = 'http://localhost:5000/api';
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Attaches JWT token to request headers if available in local storage
 export const getAuthHeaders = () => {
