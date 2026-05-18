@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import AdminPanel from './pages/AdminPanel';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -21,6 +22,18 @@ function ProtectedRoute({ children }) {
     </div>
   );
   return user ? children : <Navigate to="/login" replace />;
+}
+
+function AdminRoute({ children }) {
+  const { user, loading } = useAuth();
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <span className="material-symbols-outlined text-5xl text-primary animate-spin">progress_activity</span>
+    </div>
+  );
+  if (!user) return <Navigate to="/login" replace />;
+  if (user.role !== 'admin') return <Navigate to="/dashboard" replace />;
+  return children;
 }
 
 function Layout({ children }) {
@@ -51,11 +64,19 @@ export default function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
                 </ProtectedRoute>
               } />
+
+                <Route path="/admin" element={
+                  <AdminRoute>
+                  <AdminPanel />
+                </AdminRoute>
+              } />
+
             </Routes>
           </Layout>
         </BrowserRouter>

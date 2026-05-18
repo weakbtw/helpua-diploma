@@ -88,7 +88,8 @@ export async function getMyApplications(req, res) {
       `SELECT
         a.id, a.ticket_id, a.full_name, a.status,
         a.region, a.created_at, a.updated_at,
-        s.name AS service_name, s.code AS service_code
+        s.name AS service_name, s.code AS service_code,
+        (SELECT comment FROM status_history sh WHERE sh.application_id = a.id ORDER BY changed_at DESC LIMIT 1) as admin_comment
        FROM applications a
        LEFT JOIN services s ON a.service_id = s.id
        WHERE a.user_id = $1

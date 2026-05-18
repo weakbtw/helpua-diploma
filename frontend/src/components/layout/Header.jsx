@@ -23,6 +23,7 @@ export default function Header() {
     { to: '/apply', icon: 'description', label: 'Подати заявку' },
     { to: '/process', icon: 'checklist', label: 'Процес' },
     { to: '/contact', icon: 'phone', label: 'Контакти' },
+    ...(user?.role === 'admin' ? [{ to: '/admin', icon: 'admin_panel_settings', label: 'Адмін' }] : []),
     user 
       ? { to: '/dashboard', icon: 'account_circle', label: user.firstName || 'Кабінет' } 
       : { to: '/login', icon: 'login', label: 'Увійти' }
@@ -58,6 +59,14 @@ export default function Header() {
             </button>
 
             <div className="hidden md:block w-px h-6 bg-outline-variant mx-1" />
+
+            {user?.role === 'admin' && (
+              <Link to="/admin"
+                className="hidden md:inline-flex items-center justify-center h-9 px-3 text-on-surface-variant text-body-md font-medium hover:text-primary border border-outline-variant rounded-lg transition-colors gap-1.5">
+                <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>admin_panel_settings</span>
+                <span className="text-sm">Адмін</span>
+              </Link>
+            )}
 
             {user ? (
               <Link to="/dashboard"

@@ -6,7 +6,7 @@ import { showToast } from '../components/ui/Toast';
 
 const STATUS_CONFIG = {
   pending:   { label: 'На розгляді', color: 'bg-secondary-container text-on-secondary-container', icon: 'schedule' },
-  reviewing: { label: 'Розглядається', color: 'bg-primary-fixed text-on-primary-fixed-variant', icon: 'manage_search' },
+  reviewing: { label: 'Розглядається', color: 'bg-primary-container text-on-primary-container', icon: 'manage_search' },
   approved:  { label: 'Схвалено', color: 'bg-green-100 text-green-800', icon: 'check_circle' },
   rejected:  { label: 'Відхилено', color: 'bg-error-container text-on-error-container', icon: 'cancel' },
 };
@@ -111,9 +111,10 @@ export default function Dashboard() {
               const status = STATUS_CONFIG[app.status] || STATUS_CONFIG.pending;
               return (
                 <div key={app.id}
-                  className="bg-surface border border-outline-variant rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-primary/30 hover:shadow-sm transition-all">
+                  className="bg-surface border border-outline-variant rounded-xl p-5 flex flex-col md:flex-row justify-between gap-4 hover:border-primary/30 hover:shadow-sm transition-all">
+                  
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
                       <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>description</span>
                     </div>
                     <div>
@@ -132,6 +133,17 @@ export default function Dashboard() {
                       </p>
                     </div>
                   </div>
+
+                  {app.admin_comment && (
+                    <div className="md:max-w-xs w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-sm flex flex-col justify-center">
+                      <p className="text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wider flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[14px]">chat</span>
+                        Повідомлення
+                      </p>
+                      <p className="text-on-surface italic">«{app.admin_comment}»</p>
+                    </div>
+                  )}
+
                 </div>
               );
             })}
