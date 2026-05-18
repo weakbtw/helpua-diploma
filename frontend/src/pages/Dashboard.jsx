@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { applicationsApi } from '../api/applicationsApi.js';
-import { showToast } from '../components/ui/Toast';
+import { showToast } from '../components/ui/toastEvent';
 
 const STATUS_CONFIG = {
   pending:   { label: 'На розгляді', color: 'bg-secondary-container text-on-secondary-container', icon: 'schedule' },

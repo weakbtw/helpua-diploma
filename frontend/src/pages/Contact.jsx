@@ -1,6 +1,6 @@
 import { feedbackApi } from '../api/feedbackApi.js';
 import { useState } from 'react';
-import { showToast } from '../components/ui/Toast';
+import { showToast } from '../components/ui/toastEvent';
 
 const contacts = [
   { icon: 'support_agent', title: 'Гаряча лінія', desc: 'Цілодобова підтримка для термінових питань.', value: '0 800 123 456', href: 'tel:+380800123456', dark: false },

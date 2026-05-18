@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAccessibility } from '../../context/AccessibilityContext';
-import { showToast } from '../ui/Toast';
+import { showToast } from '../ui/toastEvent';
 import Sidebar from './Sidebar';
 import { useAuth } from '../../context/AuthContext';
 

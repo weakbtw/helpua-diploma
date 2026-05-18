@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { showToast } from '../components/ui/Toast';
+import { showToast } from '../components/ui/toastEvent';
 
 export default function Register() {
   const [form, setForm] = useState({

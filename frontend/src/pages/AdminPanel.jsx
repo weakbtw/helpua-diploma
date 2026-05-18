@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { showToast } from '../components/ui/Toast';
+import { showToast } from '../components/ui/toastEvent';
 import { getAuthHeaders, API_URL } from '../api/config.js';
 
 const STATUS_CONFIG = {

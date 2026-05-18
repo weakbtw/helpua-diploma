@@ -1,6 +1,6 @@
 import { applicationsApi } from '../api/applicationsApi.js';
 import { useState } from 'react';
-import { showToast } from '../components/ui/Toast';
+import { showToast } from '../components/ui/toastEvent';
 
 const REGIONS = [
   'Вінницька', 'Волинська', 'Дніпропетровська', 'Житомирська',
